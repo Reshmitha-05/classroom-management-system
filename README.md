@@ -1,67 +1,108 @@
-# Classroom Management System - MongoDB
+🎯 Objectives
 
-## 📌 Description
-This project demonstrates MongoDB operations for a Classroom Management System including validation, CRUD operations, and schema design.
+* Understand MongoDB database operations
+* Perform CRUD (Create, Read, Update, Delete)
+* Apply schema validation using JSON Schema
+* Manage collections efficiently
 
-## 🧪 Experiments
+ 🧪 Experiments
 
-### Experiment 1
-- Create and Drop Collection
+ 🔹 Experiment 1: Collection Operations
 
-### Experiment 2
-- Schema Validation with Required Fields
+* Created `students` collection
+* Viewed collections using `show collections`
+* Dropped collection
 
-### Experiment 3
-- Advanced Validation (Pattern, Enum, Range)
+---
 
-### Experiment 4
-- Modify Existing Collection using collMod
+ 🔹 Experiment 2: Basic Validation
 
-### Experiment 5
-- View Validation Rules
+* Applied validation using `$jsonSchema`
+* Inserted valid document ✔
+* Rejected invalid document ❌
 
-## 🔄 CRUD Operations
+---
 
-### Insert
-- insertOne()
-- insertMany()
+ 🔹 Experiment 3: Advanced Validation
 
-### Read
-- find()
-- findOne()
-- sort()
+* Used:
 
-### Update
-- updateOne()
-- updateMany()
-- $set, $inc
+  * Pattern (`^TCH[0-9]{3}$`)
+  * Enum (subjects list)
+  * Range (minimum salary)
 
-### Delete
-- deleteOne()
-- deleteMany()
-- drop()
+---
 
-## 📸 Screenshots
+🔹 Experiment 4: Modify Collection
 
-### Experiment 1
-![Exp1](exp1.png)
+* Used `collMod`
+* Added validation to existing collection
 
-### Experiment 2
-![Exp2](exp2.png)
+---
 
-### Experiment 3
-![Exp3](exp3.png)
+ 🔹 Experiment 5: View Validation
 
-### Experiment 4
-![Exp4](exp4.png)
+* Used `getCollectionInfos()`
+* Verified schema rules
 
-### Experiment 5
-![Exp5](exp5.png)
+---
+
+ 🔄 CRUD Operations
+
+### ➕ Insert
+
+* `insertOne()`
+* `insertMany()`
+
+### 📖 Read
+
+* `find()`
+* Filtering (`class: "10A"`)
+* Sorting (`age: -1`)
+
+### ✏️ Update
+
+* `updateOne()`
+* `updateMany()`
+* `$set`, `$inc`
+
+### ❌ Delete
+
+* `deleteOne()`
+* `deleteMany()`
+* `drop()`
+
+---
+
+📂 Project Structure
+
+```
+classroom-management-mongodb
+ ├── README.md
+ ├── queries.txt
+ ├── exp1.png
+ ├── exp2.png
+ ├── exp3.png
+ ├── exp4.png
+ └── exp5.png
+```
 
 ## 🛠️ Tools Used
-- MongoDB Compass
-- Mongo Shell (mongosh)
-- GitHub
 
-## 📊 Conclusion
-MongoDB provides flexible schema validation and powerful CRUD operations, making it suitable for classroom management systems.
+* MongoDB Compass
+* Mongo Shell (mongosh)
+* GitHub
+
+---
+
+ 📊 Conclusion
+
+MongoDB provides a flexible and powerful NoSQL database system.
+This project demonstrates how classroom data (students, teachers, classes) can be efficiently managed using validation and CRUD operations.
+
+
+
+## 📎 Academic Details
+
+**Subject:** Database Management Systems Lab
+**Topic:** Classroom Management System
