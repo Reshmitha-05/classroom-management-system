@@ -1,0 +1,125 @@
+use classroomDB
+
+// EXPERIMENT 1
+db.createCollection("students")
+show collections
+db.students.drop()
+
+// EXPERIMENT 2 - VALIDATION
+db.createCollection("students", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["studentId", "name", "class"],
+      properties: {
+        studentId: { bsonType: "string" },
+        name: { bsonType: "string" },
+        class: { bsonType: "string" },
+        age: { bsonType: "int" }
+      }
+    }
+  }
+})
+
+// VALID INSERT
+db.students.insertOne({
+  studentId: "STU101",
+  name: "Ananya",
+  class: "10A",
+  age: 15
+})
+
+// INVALID INSERT
+db.students.insertOne({
+  studentId: "STU102",
+  age: 14
+})
+
+// EXPERIMENT 3 - ADVANCED VALIDATION
+db.createCollection("teachers", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["teacherId", "name", "subject"],
+      properties: {
+        teacherId: {
+          bsonType: "string",
+          pattern: "^TCH[0-9]{3}$"
+        },
+        name: {
+          bsonType: "string",
+          minLength: 3
+        },
+        subject: {
+          enum: ["Math", "Science", "English", "CS"]
+        },
+        salary: {
+          bsonType: "double",
+          minimum: 20000
+        }
+      }
+    }
+  }
+})
+
+// EXPERIMENT 4
+db.createCollection("classes")
+
+db.runCommand({
+  collMod: "classes",
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["classId", "section", "room"],
+      properties: {
+        classId: { bsonType: "string" },
+        section: { bsonType: "string" },
+        room: { bsonType: "int" }
+      }
+    }
+  }
+})
+
+// EXPERIMENT 5
+db.getCollectionInfos({ name: "students" })
+
+// INSERT MANY
+db.students.insertMany([
+  { studentId: "STU103", name: "Rahul", class: "10A", age: 15 },
+  { studentId: "STU104", name: "Priya", class: "10B", age: 16 },
+  { studentId: "STU105", name: "Arjun", class: "10A", age: 15 }
+])
+
+// READ
+db.students.find()
+db.students.find({ class: "10A" })
+db.students.find({}, { name: 1 })
+db.students.find().sort({ age: -1 })
+
+// UPDATE
+db.students.updateOne(
+  { studentId: "STU103" },
+  { $set: { age: 16 } }
+)
+
+db.students.updateMany(
+  { class: "10A" },
+  { $set: { status: "Active" } }
+)
+
+db.students.updateOne(
+  { studentId: "STU104" },
+  { $inc: { age: 1 } }
+)
+
+// DELETE
+db.students.deleteOne({ studentId: "STU105" })
+db.students.deleteMany({ class: "10A" })
+db.students.deleteMany({})
+
+// DROP COLLECTIONS
+db.students.drop()
+db.teachers.drop()
+db.classes.drop()
+
+show collections
