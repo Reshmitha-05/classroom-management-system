@@ -72,20 +72,6 @@
 * `deleteMany()`
 * `drop()`
 
----
-
-📂 Project Structure
-
-```
-classroom-management-mongodb
- ├── README.md
- ├── queries.txt
- ├── exp1.png
- ├── exp2.png
- ├── exp3.png
- ├── exp4.png
- └── exp5.png
-```
 
 ## 🛠️ Tools Used
 
@@ -102,7 +88,5 @@ This project demonstrates how classroom data (students, teachers, classes) can b
 
 
 
-## 📎 Academic Details
-
-**Subject:** Database Management Systems Lab
+ 📎 Academic Details
 **Topic:** Classroom Management System
